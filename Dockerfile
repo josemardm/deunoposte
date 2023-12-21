@@ -1,5 +1,6 @@
 # Base Image
 FROM python:3.12-slim
+RUN pip install --upgrade pip
 
 # Work directory
 WORKDIR /app
@@ -7,7 +8,7 @@ WORKDIR /app
 # Copy requirements and install dependencies
 
 COPY requirements.txt requirements.txt
-# RUN pip install --upgrade pip
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 
