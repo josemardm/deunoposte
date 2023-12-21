@@ -5,8 +5,11 @@ WORKDIR /app
 
 # Copy requirements and install dependencies
 COPY requirements.txt requirements.txt
-pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install Flask
+RUN pip install jsonify
+RUN pip install requests
+RUN pip install bs4
 
 # Copy other project files
 COPY . .
