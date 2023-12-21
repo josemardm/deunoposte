@@ -1,4 +1,4 @@
---upgrade pip
+pip --upgrade pip
 Flask
 jsonify
 requests
