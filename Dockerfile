@@ -1,7 +1,8 @@
 # Base Image
 FROM python:3.9-slim
 RUN pip install --upgrade pip
-RUN pip install --root-user-action=ignore requests 
+ENV PIP_ROOT_USER_ACTION=ignore
+
 
 # Work directory
 WORKDIR /app
