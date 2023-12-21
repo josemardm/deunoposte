@@ -1,5 +1,5 @@
 # Base Image
-FROM python:3.12-slim
+FROM python:3.9-slim
 RUN pip install --upgrade pip
 RUN pip install --root-user-action=ignore requests 
 
