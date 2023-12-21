@@ -18,7 +18,7 @@ def buscaTabelaResultado(url):
 app = Flask(__name__)
 
 
-@app.route('/api/v1/resultado', methods=['GET'])
+@app.route('resultado', methods=['GET'])
 def resultado():
     dados = buscaTabelaResultado('https://www.ojogodobicho.com/deu_no_poste.htm')
     return jsonify(dados)
