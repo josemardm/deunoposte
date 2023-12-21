@@ -1,5 +1,5 @@
 # Base Image
-FROM 3.12.1-slim-bookworm
+FROM python:3.12-slim
 # Work directory
 WORKDIR /app
 
