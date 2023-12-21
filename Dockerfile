@@ -1,5 +1,5 @@
 # Base Image
-FROM python:3.12.1-slim
+FROM python:3.9-slim
 RUN pip install --upgrade pip
 ENV PIP_ROOT_USER_ACTION=ignore
 
