@@ -5,7 +5,7 @@ ENV PIP_ROOT_USER_ACTION=ignore
 
 
 # Work directory
-WORKDIR /app
+WORKDIR /
 
 # Copy requirements and install dependencies
 
@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 
 # Copy other project files
-COPY . /app
+COPY . .
 
 # Expose a port to Containers 
 EXPOSE 5000
