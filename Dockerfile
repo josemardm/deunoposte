@@ -1,5 +1,5 @@
 # Base Image
-FROM python:3.9-slim
+FROM python:3.12.1-slim
 RUN pip install --upgrade pip
 ENV PIP_ROOT_USER_ACTION=ignore
 
@@ -21,8 +21,8 @@ COPY . /app
 EXPOSE 80/tcp
 
 # Command to run on server
-#CMD ["flask", "run", "--host=0.0.0.0", "--port=80"]
-CMD ["python", "main.py", "--host=0.0.0.0", "--port=80"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=80"]
+#CMD ["python", "main.py", "--host=0.0.0.0", "--port=80"]
 
 
 
