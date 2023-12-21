@@ -18,11 +18,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 
 # Expose a port to Containers 
-EXPOSE 80/tcp
+EXPOSE 8080/tcp
 
 # Command to run on server
 #CMD ["flask", "run", "--host=0.0.0.0", "--port=80"]
-CMD ["python", "main.py"]
-
+#CMD ["python", "main.py"]
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
 
 
