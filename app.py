@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-import pandas as pd
+#import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from io import StringIO  # Importe StringIO da biblioteca io
