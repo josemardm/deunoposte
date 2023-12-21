@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 
 # Copy other project files
-COPY . .
+COPY . /app
 
 # Expose a port to Containers 
 EXPOSE 3000
