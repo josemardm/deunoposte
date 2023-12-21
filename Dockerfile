@@ -21,6 +21,6 @@ COPY . .
 EXPOSE 8080/tcp
 
 # Command to run on server
-#CMD ["flask", "run", "--host=0.0.0.0", "--port=80"]
-CMD ["python", "main.py", "--host=0.0.0.0", "--port=8080"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=80"]
+#CMD ["python", "main.py", "--host=0.0.0.0", "--port=8080"]
 
