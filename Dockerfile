@@ -18,7 +18,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 
 # Expose a port to Containers 
-EXPOSE 8000
+EXPOSE 5000
 
 # Command to run on server
-CMD ["python", "app.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "app.py"]
