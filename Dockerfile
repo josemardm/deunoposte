@@ -18,7 +18,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose a port to Containers 
-EXPOSE 80
+EXPOSE 80/tcp
 
 # Command to run on server
-CMD ["python", "app.py"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=80"]
+
