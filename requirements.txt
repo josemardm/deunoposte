@@ -3,3 +3,4 @@ Flask
 jsonify
 requests
 bs4
+pandas
