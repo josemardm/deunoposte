@@ -2,27 +2,28 @@ from flask import Flask, jsonify
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from io import StringIO  # Importe StringIO da biblioteca io
 
 
 def buscaTabelaResultado(url):
     request = requests.get(url)
     soup = BeautifulSoup(request.text, 'html.parser')
-    # Encontre a tabela
-    tabela = soup.findAll('table')
-    df = pd.read_html(StringIO(str(tabela)))[0]
-    array_resultado = df.to_numpy()  # Converte o DataFrame para um array NumPy
-    return array_resultado.tolist()  # Converte o array NumPy para uma lista Python
+    tabela = soup.find('table')
 
+    if tabela:
+        df = pd.read_html(str(tabela))[0]
+        dados = df.to_dict(orient='records')
+        return dados
+    else:
+        return {"error": "Nenhuma tabela encontrada na página"}
 
 app = Flask(__name__)
 
-
-@app.route('resultado', methods=['GET'])
+@app.route('/api/v1/resultado', methods=['GET'])
 def resultado():
     dados = buscaTabelaResultado('https://www.ojogodobicho.com/deu_no_poste.htm')
     return jsonify(dados)
 
+# A remoção de app.run() é necessária quando usando Gunicorn
 
 if __name__ == '__main__':
     app.run()
