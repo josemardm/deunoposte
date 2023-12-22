@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
-FROM  python:3.10-alpine
+FROM  python:3.9-slim
 ENV PIP_ROOT_USER_ACTION=ignore
-RUN pip3 install --upgrade pip
+RUN pip install --upgrade pip
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ ENV PYTHONUNBUFFERED 1
 # install the requirements
 COPY requirements.txt /app
 RUN --mount=type=cache,target=/root/.cache/pip \
-    pip3 install -r requirements.txt
+    pip install -r requirements.txt
 
 COPY . .
 
