@@ -4,3 +4,4 @@ jsonify
 requests
 bs4
 pandas
+lxml
