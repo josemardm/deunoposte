@@ -16,6 +16,6 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 COPY . .
 
-EXPOSE 8080/tcp
+EXPOSE 80/tcp
 
-CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8080", "app:app"]
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:80", "app:app"]
