@@ -1,28 +1,22 @@
-# Base Image
-FROM python:3.9-slim
-RUN pip install --upgrade pip
-ENV PIP_ROOT_USER_ACTION=ignore
+# syntax=docker/dockerfile:1.4
+FROM --platform=$BUILDPLATFORM python:3.10-alpine
 
-
-# Work directory
 WORKDIR /app
 
-# Copy requirements and install dependencies
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-COPY requirements.txt requirements.txt
+# install the requirements
+COPY requirements.txt /app
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip3 install -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
 
+# initialize the database (create DB, tables, populate)
+RUN python init_db.py
 
-# Copy other project files
-COPY . /app
+EXPOSE 5000/tcp
 
-# Expose a port to Containers 
-EXPOSE 8080/tcp
-
-# Command to run on server
-#CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"]
-#CMD ["python", "main.py"]
-CMD ["gunicorn", "-w 2 -b", "0.0.0.0:8080", "app:app"]
-
-
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "app:app"]
