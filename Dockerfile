@@ -16,9 +16,6 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 COPY . .
 
-# initialize the database (create DB, tables, populate)
-RUN python init_db.py
-
 EXPOSE 8080/tcp
 
 CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8080", "app:app"]
