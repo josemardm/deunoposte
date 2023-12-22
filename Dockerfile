@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1.4
 FROM --platform=$BUILDPLATFORM python:3.10-alpine
+ENV PIP_ROOT_USER_ACTION=ignore
 
 WORKDIR /app
 
@@ -17,6 +18,6 @@ COPY . .
 # initialize the database (create DB, tables, populate)
 RUN python init_db.py
 
-EXPOSE 5000/tcp
+EXPOSE 8080/tcp
 
-CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "app:app"]
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8080", "app:app"]
