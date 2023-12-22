@@ -21,8 +21,8 @@ COPY . /app
 EXPOSE 8080/tcp
 
 # Command to run on server
-#CMD ["flask", "run", "--host=0.0.0.0", "--port=80"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"]
 #CMD ["python", "main.py"]
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
+#CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
 
 
