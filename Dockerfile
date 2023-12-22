@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1.4
 FROM --platform=$BUILDPLATFORM python:3.10-alpine
 ENV PIP_ROOT_USER_ACTION=ignore
+RUN pip3 install --upgrade pip
 
 WORKDIR /app
 
